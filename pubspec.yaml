@@ -2,7 +2,7 @@ name: slide_digital_clock
 description: Digital Clock for Flutter
 version: 0.0.1
 author: Çağlar YILMAZ <caglarsibel.ylmz@gmail.com>
-homepage:
+homepage: https://github.com/caglarylmz/slide_digital_clock
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
