@@ -6,12 +6,12 @@
 
 * TODO : bottom-up animation to be added
 
-# What's Fixed
+### What's Fixed
 
 *  Fixed issue requiring am-pm
 *  Automatic adjustment of field dimensions according to Font size of Hour-Minute Text
 
 ## [0.0.2] : 06.01.2020
-# What's Fixed
+### What's Fixed
 
 *  Fixed some text files
