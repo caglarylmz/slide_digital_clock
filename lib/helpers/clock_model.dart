@@ -4,12 +4,10 @@ class ClockModel {
   int minute;
   int second;
   bool is24HourFormat;
-  DisplayModel displayModel;
 
   get is24HourTimeFormat => this.is24HourFormat;
 }
 
-enum DisplayModel { HH, HHmm, HHmmss, HHmmssMs }
 hTOhh_24hTrue(int hour) {
   String sHour;
   if (hour < 10) {
