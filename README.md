@@ -1,6 +1,5 @@
-# test_my_packages
+# Slide Digital Clock Plugin
 
-A new Flutter project.
 
 ## Usage
 To use plugin, just import package `import 'package:slide_digital_clock/slide_digital_clock.dart';`
