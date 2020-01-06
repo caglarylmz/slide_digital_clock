@@ -40,6 +40,7 @@ class DigitalClock extends StatefulWidget {
 class _DigitalClockState extends State<DigitalClock> {
   DateTime _dateTime;
   ClockModel _clockModel;
+
   @override
   void initState() {
     super.initState();
@@ -87,22 +88,7 @@ class _DigitalClockState extends State<DigitalClock> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
-            Container(
-              decoration: widget.hourMinuteDigitDecoration != null
-                  ? widget.hourMinuteDigitDecoration
-                  : BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(5)),
-              child: SpinnerText(
-                text: _clockModel.is24HourTimeFormat
-                    ? hTOhh_24hTrue(_clockModel.hour)
-                    : hTOhh_24hFalse(_clockModel.hour)[0],
-                animationStyle: widget.digitAnimationStyle,
-                textStyle: widget.hourMinuteDigitTextStyle == null
-                    ? null
-                    : widget.hourMinuteDigitTextStyle,
-              ),
-            ),
+            _hour(),
             Container(
                 padding: EdgeInsets.symmetric(horizontal: 2),
                 child: SpinnerText(
@@ -111,70 +97,93 @@ class _DigitalClockState extends State<DigitalClock> {
                       ? null
                       : widget.hourMinuteDigitTextStyle,
                 )),
-            Container(
-              decoration: widget.hourMinuteDigitDecoration != null
-                  ? widget.hourMinuteDigitDecoration
-                  : BoxDecoration(
-                      border: Border.all(color: Colors.white),
-                      borderRadius: BorderRadius.circular(5)),
-              child: SpinnerText(
-                text: mTOmm(_clockModel.minute),
-                animationStyle: widget.digitAnimationStyle,
-                textStyle: widget.hourMinuteDigitTextStyle == null
-                    ? null
-                    : widget.hourMinuteDigitTextStyle,
-              ),
-            ),
-            widget.showSecondsDigit != false
-                ? Container(
-                    margin: EdgeInsets.only(
-                        bottom: widget.secondDigitTextStyle != null ? 0 : 0,
-                        left: 4,
-                        right: 2),
-                    decoration: widget.secondDigitDecoration != null
-                        ? widget.secondDigitDecoration
-                        : BoxDecoration(
-                            border: Border.all(color: Colors.white),
-                            borderRadius: BorderRadius.circular(5)),
-                    child: SpinnerText(
-                      text: sTOss(_clockModel.second),
-                      animationStyle: widget.digitAnimationStyle,
-                      textStyle: widget.secondDigitTextStyle == null
-                          ? TextStyle(
-                              fontSize: widget.hourMinuteDigitTextStyle != null
-                                  ? widget.hourMinuteDigitTextStyle.fontSize / 2
-                                  : 15,
-                              color: widget.hourMinuteDigitTextStyle != null
-                                  ? widget.hourMinuteDigitTextStyle.color
-                                  : Colors.white)
-                          : widget.secondDigitTextStyle,
-                    ),
-                  )
-                : Text(""),
-            _clockModel.is24HourTimeFormat
-                ? Text("")
-                : Container(
-                    padding: EdgeInsets.symmetric(horizontal: 2),
-                    margin: EdgeInsets.only(
-                        bottom: widget.hourMinuteDigitTextStyle != null
-                            ? widget.hourMinuteDigitTextStyle.fontSize / 2
-                            : 15),
-                    child: Text(
-                      " " + hTOhh_24hFalse(_clockModel.hour)[1],
-                      style: widget.amPmDigitTextStyle != null
-                          ? widget.amPmDigitTextStyle
-                          : TextStyle(
-                              fontSize: widget.hourMinuteDigitTextStyle != null
-                                  ? widget.hourMinuteDigitTextStyle.fontSize / 2
-                                  : 15,
-                              color: widget.hourMinuteDigitTextStyle != null
-                                  ? widget.hourMinuteDigitTextStyle.color
-                                  : Colors.white),
-                    ),
-                  ),
+            _minute,
+            _second,
+            _amPm,
           ],
         ),
       ),
     );
   }
+
+  Widget _hour() => Container(
+        decoration: widget.hourMinuteDigitDecoration != null
+            ? widget.hourMinuteDigitDecoration
+            : BoxDecoration(
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(5)),
+        child: SpinnerText(
+          text: _clockModel.is24HourTimeFormat
+              ? hTOhh_24hTrue(_clockModel.hour)
+              : hTOhh_24hFalse(_clockModel.hour)[0],
+          animationStyle: widget.digitAnimationStyle,
+          textStyle: widget.hourMinuteDigitTextStyle == null
+              ? null
+              : widget.hourMinuteDigitTextStyle,
+        ),
+      );
+
+  Widget get _minute => Container(
+        decoration: widget.hourMinuteDigitDecoration != null
+            ? widget.hourMinuteDigitDecoration
+            : BoxDecoration(
+                border: Border.all(color: Colors.white),
+                borderRadius: BorderRadius.circular(5)),
+        child: SpinnerText(
+          text: mTOmm(_clockModel.minute),
+          animationStyle: widget.digitAnimationStyle,
+          textStyle: widget.hourMinuteDigitTextStyle == null
+              ? null
+              : widget.hourMinuteDigitTextStyle,
+        ),
+      );
+
+  Widget get _second => widget.showSecondsDigit != false
+      ? Container(
+          margin: EdgeInsets.only(
+              bottom: widget.secondDigitTextStyle != null ? 0 : 0,
+              left: 4,
+              right: 2),
+          decoration: widget.secondDigitDecoration != null
+              ? widget.secondDigitDecoration
+              : BoxDecoration(
+                  border: Border.all(color: Colors.white),
+                  borderRadius: BorderRadius.circular(5)),
+          child: SpinnerText(
+            text: sTOss(_clockModel.second),
+            animationStyle: widget.digitAnimationStyle,
+            textStyle: widget.secondDigitTextStyle == null
+                ? TextStyle(
+                    fontSize: widget.hourMinuteDigitTextStyle != null
+                        ? widget.hourMinuteDigitTextStyle.fontSize / 2
+                        : 15,
+                    color: widget.hourMinuteDigitTextStyle != null
+                        ? widget.hourMinuteDigitTextStyle.color
+                        : Colors.white)
+                : widget.secondDigitTextStyle,
+          ),
+        )
+      : Text("");
+
+  Widget get _amPm => _clockModel.is24HourTimeFormat
+      ? Text("")
+      : Container(
+          padding: EdgeInsets.symmetric(horizontal: 2),
+          margin: EdgeInsets.only(
+              bottom: widget.hourMinuteDigitTextStyle != null
+                  ? widget.hourMinuteDigitTextStyle.fontSize / 2
+                  : 15),
+          child: Text(
+            " " + hTOhh_24hFalse(_clockModel.hour)[1],
+            style: widget.amPmDigitTextStyle != null
+                ? widget.amPmDigitTextStyle
+                : TextStyle(
+                    fontSize: widget.hourMinuteDigitTextStyle != null
+                        ? widget.hourMinuteDigitTextStyle.fontSize / 2
+                        : 15,
+                    color: widget.hourMinuteDigitTextStyle != null
+                        ? widget.hourMinuteDigitTextStyle.color
+                        : Colors.white),
+          ),
+        );
 }

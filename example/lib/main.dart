@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:slide_digital_clock/slide_digital_clock.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
