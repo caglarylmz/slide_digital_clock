@@ -40,6 +40,7 @@ class DigitalClock extends StatefulWidget {
 class _DigitalClockState extends State<DigitalClock> {
   DateTime _dateTime;
   ClockModel _clockModel;
+  Timer _timer;
 
   @override
   void initState() {
@@ -54,7 +55,7 @@ class _DigitalClockState extends State<DigitalClock> {
     _clockModel.minute = _dateTime.minute;
     _clockModel.second = _dateTime.second;
 
-    Timer.periodic(Duration(seconds: 1), (timer) {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       _dateTime = DateTime.now();
       _clockModel.hour = _dateTime.hour;
       _clockModel.minute = _dateTime.minute;
@@ -62,6 +63,12 @@ class _DigitalClockState extends State<DigitalClock> {
 
       setState(() {});
     });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel();
+    super.dispose();
   }
 
   @override
