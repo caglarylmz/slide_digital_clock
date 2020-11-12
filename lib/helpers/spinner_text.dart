@@ -45,8 +45,8 @@ class _SpinnerTextState extends State<SpinnerText>
 
   @override
   void dispose() {
-    super.dispose();
     _spinTextAnimationController.dispose();
+    super.dispose();
   }
 
   @override
