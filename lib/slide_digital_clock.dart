@@ -20,26 +20,26 @@ class DigitalClock extends StatefulWidget {
     this.amPmDigitTextStyle,
   });
 
-  final bool is24HourTimeFormat;
-  final bool showSecondsDigit;
-  final double areaWidth;
-  final double areaHeight;
-  final BoxDecoration areaDecoration;
-  final AlignmentDirectional areaAligment;
-  final BoxDecoration hourMinuteDigitDecoration;
-  final BoxDecoration secondDigitDecoration;
-  final Curve digitAnimationStyle;
-  final TextStyle hourMinuteDigitTextStyle;
-  final TextStyle secondDigitTextStyle;
-  final TextStyle amPmDigitTextStyle;
+  final bool? is24HourTimeFormat;
+  final bool? showSecondsDigit;
+  final double? areaWidth;
+  final double? areaHeight;
+  final BoxDecoration? areaDecoration;
+  final AlignmentDirectional? areaAligment;
+  final BoxDecoration? hourMinuteDigitDecoration;
+  final BoxDecoration? secondDigitDecoration;
+  final Curve? digitAnimationStyle;
+  final TextStyle? hourMinuteDigitTextStyle;
+  final TextStyle? secondDigitTextStyle;
+  final TextStyle? amPmDigitTextStyle;
 
   @override
   _DigitalClockState createState() => _DigitalClockState();
 }
 
 class _DigitalClockState extends State<DigitalClock> {
-  DateTime _dateTime;
-  ClockModel _clockModel;
+  late DateTime _dateTime;
+  late ClockModel _clockModel;
 
   @override
   void initState() {
@@ -70,7 +70,7 @@ class _DigitalClockState extends State<DigitalClock> {
       width: widget.areaWidth != null
           ? widget.areaWidth
           : widget.hourMinuteDigitTextStyle != null
-              ? widget.hourMinuteDigitTextStyle.fontSize * 7
+              ? widget.hourMinuteDigitTextStyle!.fontSize! * 7
               : 180,
       height: widget.areaHeight != null ? widget.areaHeight : null,
       child: Container(
@@ -155,10 +155,10 @@ class _DigitalClockState extends State<DigitalClock> {
             textStyle: widget.secondDigitTextStyle == null
                 ? TextStyle(
                     fontSize: widget.hourMinuteDigitTextStyle != null
-                        ? widget.hourMinuteDigitTextStyle.fontSize / 2
+                        ? widget.hourMinuteDigitTextStyle!.fontSize! / 2
                         : 15,
                     color: widget.hourMinuteDigitTextStyle != null
-                        ? widget.hourMinuteDigitTextStyle.color
+                        ? widget.hourMinuteDigitTextStyle!.color
                         : Colors.white)
                 : widget.secondDigitTextStyle,
           ),
@@ -171,7 +171,7 @@ class _DigitalClockState extends State<DigitalClock> {
           padding: EdgeInsets.symmetric(horizontal: 2),
           margin: EdgeInsets.only(
               bottom: widget.hourMinuteDigitTextStyle != null
-                  ? widget.hourMinuteDigitTextStyle.fontSize / 2
+                  ? widget.hourMinuteDigitTextStyle!.fontSize! / 2
                   : 15),
           child: Text(
             " " + hTOhh_24hFalse(_clockModel.hour)[1],
@@ -179,10 +179,10 @@ class _DigitalClockState extends State<DigitalClock> {
                 ? widget.amPmDigitTextStyle
                 : TextStyle(
                     fontSize: widget.hourMinuteDigitTextStyle != null
-                        ? widget.hourMinuteDigitTextStyle.fontSize / 2
+                        ? widget.hourMinuteDigitTextStyle!.fontSize! / 2
                         : 15,
                     color: widget.hourMinuteDigitTextStyle != null
-                        ? widget.hourMinuteDigitTextStyle.color
+                        ? widget.hourMinuteDigitTextStyle!.color
                         : Colors.white),
           ),
         );

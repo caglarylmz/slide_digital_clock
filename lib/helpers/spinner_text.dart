@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class SpinnerText extends StatefulWidget {
-  SpinnerText({@required this.text, this.textStyle, this.animationStyle})
+  SpinnerText({required this.text, this.textStyle, this.animationStyle})
       : assert(text != null);
 
   final String text;
-  final TextStyle textStyle;
-  final Curve animationStyle;
+  final TextStyle? textStyle;
+  final Curve? animationStyle;
 
   _SpinnerTextState createState() => _SpinnerTextState();
 }
@@ -16,8 +16,8 @@ class _SpinnerTextState extends State<SpinnerText>
   String topText = "";
   String bottomText = "";
 
-  AnimationController _spinTextAnimationController;
-  Animation<double> _spinAnimation;
+  late AnimationController _spinTextAnimationController;
+  late Animation<double> _spinAnimation;
 
   @override
   void initState() {
@@ -40,7 +40,7 @@ class _SpinnerTextState extends State<SpinnerText>
         parent: _spinTextAnimationController,
         curve: widget.animationStyle == null
             ? Curves.decelerate
-            : widget.animationStyle);
+            : widget.animationStyle!);
   }
 
   @override
