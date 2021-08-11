@@ -1,9 +1,9 @@
 class ClockModel {
-  ClockModel();
-  int hour;
-  int minute;
-  int second;
-  bool is24HourFormat;
+
+  late int hour;
+  late int minute;
+  late int second;
+  late bool is24HourFormat;
 
   get is24HourTimeFormat => this.is24HourFormat;
 }
@@ -19,8 +19,8 @@ hTOhh_24hTrue(int hour) {
 }
 
 hTOhh_24hFalse(int hour) {
-  String sHour;
-  String h12State;
+  String sHour="";
+  String h12State="";
   var times = [];
   if (hour < 10) {
     sHour = "0$hour";
