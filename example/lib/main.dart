@@ -20,6 +20,7 @@ class MyApp extends StatelessWidget {
                     BoxDecoration(color: Colors.transparent),
                 hourMinuteDigitTextStyle: TextStyle(fontSize: 15),
                 secondDigitTextStyle: TextStyle(fontSize: 11),
+                secondDigitDecoration: BoxDecoration(color: Colors.transparent),
               )
             ],
           ),

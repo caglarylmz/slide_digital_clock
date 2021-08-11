@@ -99,7 +99,7 @@ packages:
       name: slide_digital_clock
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.0.0"
+    version: "1.0.2"
   source_span:
     dependency: transitive
     description:

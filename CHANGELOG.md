@@ -1,3 +1,9 @@
+## [1.0.2] : 11.08.2020
+* Fix Null-Safety bugs
+
+## [1.0.1] : 11.08.2020
+* Fix Null-Safety
+
 ## [1.0.0] : 06.01.2020
 * TODO : bottom-up animation to be added
 *  Added example project

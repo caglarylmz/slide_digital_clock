@@ -9,7 +9,7 @@ class ClockModel {
 }
 
 hTOhh_24hTrue(int hour) {
-  String sHour;
+  late String sHour;
   if (hour < 10) {
     sHour = "0$hour";
   } else {
@@ -19,8 +19,8 @@ hTOhh_24hTrue(int hour) {
 }
 
 hTOhh_24hFalse(int hour) {
-  String sHour="";
-  String h12State="";
+  late String sHour;
+  late String h12State;
   var times = [];
   if (hour < 10) {
     sHour = "0$hour";
@@ -41,7 +41,7 @@ hTOhh_24hFalse(int hour) {
 }
 
 mTOmm(int minute) {
-  String sMinute;
+  late String sMinute;
   if (minute < 10) {
     sMinute = "0$minute";
   } else {
@@ -51,7 +51,7 @@ mTOmm(int minute) {
 }
 
 sTOss(int second) {
-  String sSecond;
+  late String sSecond;
   if (second < 10) {
     sSecond = "0$second";
   } else {
