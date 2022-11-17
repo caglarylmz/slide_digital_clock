@@ -25,10 +25,10 @@ hTOhh_24hFalse(int hour) {
   if (hour < 10) {
     sHour = "0$hour";
     h12State = "AM";
-  } else if (hour > 9 && hour < 13) {
+  } else if (hour > 9 && hour < 12) {
     sHour = "$hour";
     h12State = "AM";
-  } else if (hour > 12 && hour < 22) {
+  } else if (hour >= 12 && hour < 22) {
     sHour = "0${hour % 12}";
     h12State = "PM";
   } else if (hour > 21) {
