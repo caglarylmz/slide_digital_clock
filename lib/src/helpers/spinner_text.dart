@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SpinnerText extends StatefulWidget {
-  SpinnerText({required this.text,  this.textStyle, this.animationStyle});
+  SpinnerText({required this.text, this.textStyle, this.animationStyle});
 
   final String text;
   final TextStyle? textStyle;
@@ -23,7 +23,7 @@ class _SpinnerTextState extends State<SpinnerText>
     super.initState();
     bottomText = widget.text;
     _spinTextAnimationController = new AnimationController(
-        duration: const Duration(milliseconds: 750), vsync: this)
+        duration: const Duration(milliseconds: 500), vsync: this)
       ..addListener(() => setState(() {}))
       ..addStatusListener((AnimationStatus status) {
         if (status == AnimationStatus.completed) {
@@ -37,7 +37,7 @@ class _SpinnerTextState extends State<SpinnerText>
 
     _spinAnimation = CurvedAnimation(
         parent: _spinTextAnimationController,
-        curve: widget.animationStyle ?? Curves.decelerate);
+        curve: widget.animationStyle ?? Curves.ease);
   }
 
   @override
@@ -64,12 +64,12 @@ class _SpinnerTextState extends State<SpinnerText>
       child: Stack(
         children: <Widget>[
           FractionalTranslation(
-            translation: Offset(0.0, _spinAnimation.value - 1.0),
+            translation: Offset(0.0, 1 - _spinAnimation.value),
             child: Text(
               topText,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: widget.textStyle ?? TextStyle(color: Colors.white, fontSize: 30),
+              style: widget.textStyle,
             ),
           ),
           FractionalTranslation(
@@ -77,7 +77,7 @@ class _SpinnerTextState extends State<SpinnerText>
             child: Text(bottomText,
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
-                style: widget.textStyle ?? TextStyle(color: Colors.white, fontSize: 30)),
+                style: widget.textStyle),
           ),
         ],
       ),

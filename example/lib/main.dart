@@ -1,95 +1,116 @@
 import 'package:flutter/material.dart';
 import 'package:slide_digital_clock/slide_digital_clock.dart';
 
-void main() => runApp(MyApp());
+void main() {
+  runApp(const ExampleApp());
+}
 
-class MyApp extends StatelessWidget {
+class ExampleApp extends StatelessWidget {
+  const ExampleApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'Slider Digital Clock Demo',
-        home: Scaffold(
-          appBar: AppBar(
-            title: Text("Slider Digital Clock Demo"),
-            actions: <Widget>[
+      debugShowCheckedModeBanner: false,
+      title: "Slider Digital Clock Demo App",
+      home: Scaffold(
+        appBar: AppBar(
+            title: const Text("Slider Digital Clock Demo App"),
+            actions: [
               DigitalClock(
-                areaDecoration: BoxDecoration(color: Colors.transparent),
-                areaAligment: AlignmentDirectional.center,
-                hourMinuteDigitDecoration:
-                    BoxDecoration(color: Colors.transparent),
-                hourMinuteDigitTextStyle: TextStyle(fontSize: 15),
-                secondDigitTextStyle: TextStyle(fontSize: 11),
-                secondDigitDecoration: BoxDecoration(color: Colors.transparent),
+                hourMinuteDigitTextStyle: Theme.of(context)
+                    .textTheme
+                    .headline4!
+                    .copyWith(color: Colors.white),
+                secondDigitTextStyle: Theme.of(context)
+                    .textTheme
+                    .caption!
+                    .copyWith(color: Colors.white),
+                colon: Text(
+                  ":",
+                  style: Theme.of(context)
+                      .textTheme
+                      .subtitle1!
+                      .copyWith(color: Colors.white),
+                ),
               )
-            ],
-          ),
-          body: Center(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                DigitalClock(),
-                SizedBox(
-                  height: 20,
-                ),
+            ]),
+        body: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text("Custom Colon"),
+                const SizedBox(width: 50),
                 DigitalClock(
-                  is24HourTimeFormat: false,
-                  digitAnimationStyle: Curves.bounceInOut,
-                ),
-                SizedBox(
-                  height: 20,
-                ),
+                  hourMinuteDigitTextStyle: const TextStyle(fontSize: 18),
+                  colon: const Icon(Icons.ac_unit, size: 12),
+                  colonDecoration: BoxDecoration(
+                      border: Border.all(), shape: BoxShape.circle),
+                )
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text("Custom Styles"),
+                const SizedBox(width: 50),
                 DigitalClock(
-                  digitAnimationStyle: Curves.elasticOut,
-                  is24HourTimeFormat: false,
-                  areaDecoration: BoxDecoration(
-                    color: Colors.transparent,
-                  ),
-                  hourMinuteDigitTextStyle: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 50,
-                  ),
-                  amPmDigitTextStyle: TextStyle(
-                      color: Colors.blueGrey, fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                DigitalClock(
-                  digitAnimationStyle: Curves.easeOutExpo,
-                  hourMinuteDigitTextStyle: TextStyle(
-                    color: Colors.yellow,
-                    fontSize: 50,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                DigitalClock(
-                  hourMinuteDigitTextStyle: TextStyle(
-                    color: Colors.yellow,
-                    fontSize: 50,
-                  ),
-                  secondDigitTextStyle: TextStyle(
-                    color: Colors.white,
-                    fontSize: 50,
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                DigitalClock(
-                  areaWidth: 180,
-                  showSecondsDigit: false,
-                  hourMinuteDigitTextStyle: TextStyle(
-                    color: Colors.yellow,
-                    fontSize: 50,
-                  ),
+                  hourDigitDecoration: BoxDecoration(
+                      color: Colors.yellow,
+                      border: Border.all(color: Colors.blue, width: 2)),
+                  minuteDigitDecoration: BoxDecoration(
+                      color: Colors.yellow,
+                      border: Border.all(color: Colors.red, width: 2)),
+                  secondDigitDecoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      border: Border.all(color: Colors.blue),
+                      shape: BoxShape.circle),
+                  secondDigitTextStyle: Theme.of(context)
+                      .textTheme
+                      .caption!
+                      .copyWith(color: Colors.white),
                 ),
               ],
             ),
-          ),
-        ));
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text("Custom Styles"),
+                const SizedBox(width: 50),
+                DigitalClock(
+                  hourDigitDecoration: const BoxDecoration(
+                      color: Colors.yellow, shape: BoxShape.circle),
+                  minuteDigitDecoration: const BoxDecoration(
+                      color: Colors.yellow, shape: BoxShape.circle),
+                  secondDigitDecoration: BoxDecoration(
+                      color: Colors.blueGrey,
+                      border: Border.all(color: Colors.blue),
+                      shape: BoxShape.circle),
+                  secondDigitTextStyle: Theme.of(context)
+                      .textTheme
+                      .caption!
+                      .copyWith(color: Colors.white),
+                  colonDecoration: BoxDecoration(
+                      border: Border.all(color: Colors.blue, width: 1),
+                      shape: BoxShape.circle),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const Text("Show AM-PM, Disable Seconds"),
+                const SizedBox(width: 50),
+                DigitalClock(
+                  is24HourTimeFormat: false,
+                  showSecondsDigit: false,
+                ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }

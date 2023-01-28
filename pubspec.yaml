@@ -1,6 +1,6 @@
 name: slide_digital_clock
 description: Digital Clock for Flutter
-version: 1.0.2
+version: 1.0.3
 author: Çağlar YILMAZ <caglarsibel.ylmz@gmail.com>
 homepage: https://github.com/caglarylmz/slide_digital_clock
 
@@ -14,5 +14,6 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^2.0.0
     
 flutter:
