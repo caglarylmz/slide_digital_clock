@@ -1,4 +1,4 @@
-## [1.0.2] : 11.08.2020
+## [1.0.2] : 28.01.2023
 
 - New animation for spinner text
 - Customizable decoration for all digits
