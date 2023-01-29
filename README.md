@@ -7,7 +7,7 @@ To use plugin, just import package `import 'package:slide_digital_clock/slide_di
 ## Defaults
 
     is24HourTimeFormat : `true`
-    showSecondsDigit : `true`    a
+    showSecondsDigit : `true`  
     areaAligment : `AlignmentDirectional.bottomCenter`   
     digitAnimationStyle : `Curves.decelerate`
     hourMinuteDigitTextStyle : `Theme.of(context).textTheme.bodyText1`
