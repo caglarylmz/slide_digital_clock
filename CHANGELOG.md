@@ -27,8 +27,8 @@
 
 ## [0.0.2] : 06.01.2020
 
-* TODO : bottom-*p animation to be added
-* Fixed issue re*uiring am-pm
+* TODO : bottom animation to be added
+* Fixed issue requiring am-pm
 * Automatic adjustment of field dimensions according to Font size of Hour-Minute Text
 
 ## [0.0.1] : 05.01.2020
