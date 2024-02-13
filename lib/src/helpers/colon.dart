@@ -38,7 +38,7 @@ class _ColonWidgetState extends State<ColonWidget> {
       child: widget.colon ??
           Text(
             ":",
-            style: Theme.of(context).textTheme.caption,
+            style: Theme.of(context).textTheme.bodySmall,
           ),
     );
   }
