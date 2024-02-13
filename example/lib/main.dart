@@ -20,17 +20,17 @@ class ExampleApp extends StatelessWidget {
               DigitalClock(
                 hourMinuteDigitTextStyle: Theme.of(context)
                     .textTheme
-                    .headline4!
+                    .headlineMedium!
                     .copyWith(color: Colors.white),
                 secondDigitTextStyle: Theme.of(context)
                     .textTheme
-                    .caption!
+                    .bodySmall!
                     .copyWith(color: Colors.white),
                 colon: Text(
                   ":",
                   style: Theme.of(context)
                       .textTheme
-                      .subtitle1!
+                      .titleMedium!
                       .copyWith(color: Colors.white),
                 ),
               )
@@ -68,7 +68,7 @@ class ExampleApp extends StatelessWidget {
                       shape: BoxShape.circle),
                   secondDigitTextStyle: Theme.of(context)
                       .textTheme
-                      .caption!
+                      .bodySmall!
                       .copyWith(color: Colors.white),
                 ),
               ],
@@ -89,7 +89,7 @@ class ExampleApp extends StatelessWidget {
                       shape: BoxShape.circle),
                   secondDigitTextStyle: Theme.of(context)
                       .textTheme
-                      .caption!
+                      .bodySmall!
                       .copyWith(color: Colors.white),
                   colonDecoration: BoxDecoration(
                       border: Border.all(color: Colors.blue, width: 1),
@@ -100,11 +100,12 @@ class ExampleApp extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                const Text("Show AM-PM, Disable Seconds"),
+                const Text("Show AM-PM, Disable Seconds, AM-PM on right"),
                 const SizedBox(width: 50),
                 DigitalClock(
                   is24HourTimeFormat: false,
                   showSecondsDigit: false,
+                  amPmPosition: AmPmPosition.right,
                 ),
               ],
             )
